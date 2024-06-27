@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="signup.css" />
+</head>
+
+<body>
+    <main class="container">
+        <div class="Image-container">
+            <img class="form-image" src="images/nightsky.jpg" alt="Night Sky">
+            <div class="logo-container">
+                <img src="images/odin-logo.png" alt="odin-logo" />ODIN
+            </div>
+        </div>
+        <div class="content-container">
+            <h1>Sign Up</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
+                repellat, quidem, quaerat, recusandae doloremque quas
+                voluptatum, quo autem delectus quasi nesciunt quod. Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Quos
+                repellat, quidem, quaerat, recusandae doloremque quas
+                voluptatum, quo autem delectus quasi nesciunt quod.
+            </p>
+        </div>
+        <div class="form-container">
+            <form action="#" method="post" id="form">
+                <h1>Let's Do This!</h1>
+                <div class="input-row">
+                    <div class="input-group name">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first-name" placeholder="First Name" required
+                            pattern="^[a-zA-Z][a-zA-Z0-9]{0,9}$"
+                            title="Usernames can only have characters and numbers (Up to 10 Characters)" />
+                    </div>
+                    <div class="input-group name">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" placeholder="Last Name" required
+                            pattern="^[a-zA-Z][a-zA-Z0-9]{0,9}$"
+                            title="Usernames can only have characters and numbers (Up to 10 Characters)" />
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group email">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                    </div>
+                    <div class="input-group email">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="tel" id="phone-number" name="phone-number" placeholder="+99(99)9999-9999"
+                            pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}" title="Format: +99(99)9999-9999" required />
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group password">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password"
+                            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                            title="Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character, and must be at least 8 characters long."
+                            required />
+                    </div>
+                    <div class="input-group password">
+                        <label for="confirm-password">Confirm Password</label>
+                        <span><input type="password" id="confirm-password" name="confirm-password"
+                                placeholder="Re-Enter Password" required />
+                            <small id="confirm-password-error"></small></span>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group gender">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group gender">
+                        <label for="birth-date">Birth Date</label>
+                        <input type="date" id="birth-date" name="birth-date" placeholder="Birth Date" required />
+                    </div>
+                </div>
+                <div class="input-group checkbox">
+                    <input type="checkbox" id="terms-and-conditions" name="terms-and-conditions"
+                        value="terms-and-conditions" />
+                    <label for="terms-and-conditions">I agree to the <a href="#">Terms and Conditions</a></label>
+                </div>
+                <div class="input-group checkbox">
+                    <input type="checkbox" id="privacy-policy" name="privacy-policy" value="privacy-policy" />
+                    <label for="privacy-policy">I agree to the <a href="#">Privacy Policy</a></label>
+                </div>
+                <div class="input-group submit">
+                    <button type="submit" id="submit">Sign Up</button>
+                </div>
+                <div class="input-group login">
+                    <p>Already have an account? <a href="_blank.html" target="_blank">Log In</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="signup.js"></script>
+</body>
+
+</html>
