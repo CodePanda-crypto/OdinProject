@@ -13,10 +13,15 @@
 </head>
 
 <body>
-    <main class="container">
-        <header class="header">
-            <img src="libassests\library-building-icon.jpg" alt="library-building-icon">
-        </header>
+    <header class="header">
+        <nav>
+            <div class="logo-container">
+                <a class="home-reset" href="#" rel="noopener">
+                    <img src="libassests\lib-log.jpg" alt="Library Logo" class="logo">
+                    <h1 class="logo-text">Library</h1>
+                </a>
+            </div>
+        </nav>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,23 +30,24 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#" rel="noopener">Home </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#" rel="noopener">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#" rel="noopener">Contact</a>
                     </li>
                 </ul>
             </div>
         </nav>
+    </header>
+    <main class="container">
         <div class="jumbotron">
             <h1 class="display-4">Welcome to the Library</h1>
             <p class="lead">This is a simple library website that allows you to search for books and add them to your
-                reading list.You can also add books to your reading list and remove them from it.
-            </p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                reading list.You can also add books to your reading list and remove them from it.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button" rel="noopener">Learn more</a>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -49,21 +55,21 @@
                     alt="Card image cap">
                 <div class="card-body">
                     <p class="card-text">
-                        <ul class="book-data">
-                            <li>Book Name</li>
-                            <li>Author</li>
-                            <li>Pages</li>
-                            <li>Read Status</li>
-                        </ul>
+                    <ul class="book-data">
+                        <li>Title</li>
+                        <li>Author</li>
+                        <li>Pages</li>
+                        <li>Read Status</li>
+                    </ul>
                     </p>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Read Status</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit">Edit</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Delete">Delete</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Read Status">Read
+                        Status</button>
                 </div>
             </div>
-        </div>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -71,23 +77,75 @@
                     alt="Card image cap">
                 <div class="card-body">
                     <p class="card-text">
-                        <ul class="book-data">
-                            <li>Book Name</li>
-                            <li>Author</li>
-                            <li>Pages</li>
-                            <li>Read Status</li>
-                        </ul>
+                    <ul class="book-data">
+                        <li>Title</li>
+                        <li>Author</li>
+                        <li>Pages</li>
+                        <li>Read Status</li>
+                    </ul>
                     </p>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Read Status</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit">Edit</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Delete">Delete</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Read Status">Read
+                        Status</button>
                 </div>
             </div>
         </div>
-        <div class="add-new-book">
-
+        <div class="books-data-container" id="books-data-container"></div>
+        <button type="button" class="data-toggle" data-bs-toggle="modal" data-bs-target="#book-modal" rel="noopener">
+            <i class="bi bi-plus-lg">
+                Add Book
+            </i>
+        </button>
+        <div class="modal-container" id="book-modal" tabindex="-1" aria-labelledby="book-modal-label"
+            aria-hidden="true"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="book-modal-label">Add Book Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="book-title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="book-title" aria-describedby="book-title" required>
+                        <div id="book-title-feedback" class="form-text"></div>
+                        <label for="book-author" class="form-label">Author</label>
+                        <input type="text" class="form-control" id="book-author" aria-describedby="book-author"
+                            required>
+                        <div id="book-author-feedback" class="form-text"></div>
+                        <label for="book-pages" class="form-label">Pages</label>
+                        <input type="text" class="form-control" id="book-pages" aria-describedby="book-pages" required>
+                        <div id="book-pages-feedback" class="form-text"></div>
+                        <label for="book-read-status" class="form-label">Read</label>
+                        <input type="checkbox" class="form-control" id="book-read-status"
+                            aria-describedby="book-read-status" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" rel="noopener">Cancel</button>
+                <button type="button" class="btn btn-primary" id="add-book" rel="noopener">Add
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <p>
+                    ©
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    Library. Created By
+                    <a class="text-primary" href="https://github.com/CodePanda-crypto" target="_blank">CodePanda
+                        Crypto</a>. All Rights Reserved.
+                </p>
+        </footer>
+        </div>
+        </footer>
 
     </main>
     <script src="library.js"></script>
