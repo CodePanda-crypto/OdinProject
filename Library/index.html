@@ -16,17 +16,13 @@
     <header class="header">
         <nav>
             <div class="logo-container">
-                <a class="home-reset" href="#" rel="noopener">
+                <a class="home" href="#" rel="noopener">
                     <img src="libassests\lib-log.jpg" alt="Library Logo" class="logo">
                     <h1 class="logo-text">Library</h1>
                 </a>
             </div>
         </nav>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
@@ -50,49 +46,49 @@
             <a class="btn btn-primary btn-lg" href="#" role="button" rel="noopener">Learn more</a>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/51110790-L._SL1500_.jpg"
-                    alt="Card image cap">
+            <div class="card-header">
+                <h3>Title</h3>
+            </div>
                 <div class="card-body">
                     <p class="card-text">
                     <ul class="book-data">
-                        <li>Title</li>
                         <li>Author</li>
                         <li>Pages</li>
                         <li>Read Status</li>
                     </ul>
                     </p>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit">Edit</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Delete">Delete</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Read Status">Read
-                        Status</button>
+                <div class="card-footer">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit">Edit</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" title="Delete">Delete</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" title="Read Status">Read
+                            Status</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/51110790-L._SL1500_.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">
-                    <ul class="book-data">
-                        <li>Title</li>
-                        <li>Author</li>
-                        <li>Pages</li>
-                        <li>Read Status</li>
-                    </ul>
-                    </p>
+            <div class="row">
+                <div class="card-header">
+                    <h3>Title</h3>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit">Edit</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Delete">Delete</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Read Status">Read
-                        Status</button>
+                    <div class="card-body">
+                        <p class="card-text">
+                        <ul class="book-data">
+                            <li>Author</li>
+                            <li>Pages</li>
+                            <li>Read Status</li>
+                        </ul>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit">Edit</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" title="Delete">Delete</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" title="Read Status">Read
+                                Status</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
         <div class="books-data-container" id="books-data-container"></div>
         <button type="button" class="data-toggle" data-bs-toggle="modal" data-bs-target="#book-modal" rel="noopener">
             <i class="bi bi-plus-lg">
