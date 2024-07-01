@@ -11,9 +11,12 @@ const form = document.getElementById("form");
 
 function validatePasswordConfirm() {
   if (password.value === passwordConfirm.value) {
-    passwordConfirmError.innerHTML = null;
-    passwordConfirm.style.borderColor = "green";
-    password.style.borderColor = "green";
+    passwordConfirmError.innerHTML = "*Passwords match";
+    passwordConfirmError.style.color = "#255046";
+    passwordConfirm.style.borderColor = "#00ff6a";
+    passwordConfirm.style.boxShadow = "0px 0px 5px #15daac";
+    password.style.borderColor = "#00ff6a";
+    password.style.boxShadow = "0px 0px 5px #15daac";
     return true;
   } else {
     passwordConfirmError.innerHTML = "*Passwords do not match";
@@ -25,6 +28,10 @@ function validatePasswordConfirm() {
 function resetStyles() {
   document.getElementById("password").style.borderColor = "";
   document.getElementById("confirm-password").style.borderColor = "";
+  document.getElementById("confirm-password-error").innerHTML = "";
+  document.getElementById("confirm-password-error").style.color = "";
+  document.getElementById("password").style.boxShadow = "";
+  document.getElementById("confirm-password").style.boxShadow = "";
 }
 
 function validateForm() {
