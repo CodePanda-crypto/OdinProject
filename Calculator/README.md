@@ -8,7 +8,7 @@
 
 
 
-![App Screenshot](https://i.ibb.co/0GP2Sy4/Calculator.png)
+![App Screenshot](Images/Calculator.PNG)
 
 
 ## Powered By
