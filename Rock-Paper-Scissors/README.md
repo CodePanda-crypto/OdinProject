@@ -20,5 +20,8 @@
  - [FreeCodeCamp](https://www.freecodecamp.org/)
  - [Odin Project](https://www.theodinproject.com/)
  - [Github](https://github.com/)
+ - [CSS-TRICKS](https://css-tricks.com/)
+ - [JavaScript.info](https://javascript.info/)
+ - [PlainJS](https://plainjs.com/)
 
 
