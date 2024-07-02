@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   const addBookButton = document.getElementById("add-book");
   const bookForm = document.getElementById("book-form");
+  const booksContainer = document.getElementById("books-container");
   const bookTitle = document.getElementById("book-title");
   const bookAuthor = document.getElementById("book-author");
   const bookPages = document.getElementById("book-pages");
@@ -15,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const bookTitleFeedback = document.getElementById("book-title-feedback");
   const bookAuthorFeedback = document.getElementById("book-author-feedback");
   const bookPagesFeedback = document.getElementById("book-pages-feedback");
-  const booksContainer = document.getElementById("books-container");
 
   let books = [
     {
@@ -31,6 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
       read: "Read",
     },
   ];
+
+  class Book {
+    constructor(title, author, pages, read) {
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+      this.read = read;
+    }
+  }
 
   // Render the initial set of books
   renderBooks();
@@ -100,12 +109,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function addBook() {
-    const book = {
-      title: bookTitle.value,
-      author: bookAuthor.value,
-      pages: bookPages.value,
-      read: bookRead.checked ? "Read" : "Unread",
-    };
+    const book = new Book(
+      bookTitle.value,
+      bookAuthor.value,
+      bookPages.value,
+      bookRead.checked ? "Read" : "Unread"
+    );
     books.push(book);
     renderBooks();
     modalContainer.style.display = "none";
@@ -125,37 +134,41 @@ document.addEventListener("DOMContentLoaded", () => {
       const bookCard = document.createElement("div");
       bookCard.classList.add("book-card");
       bookCard.innerHTML = `
-                  <div class="card">
-                      <div class="card-header">
-                          <h3>${book.title}</h3>
-                      </div>
-                      <div class="card-body">
-                          <ul class="book-data">
-                              <li>Author: ${book.author}</li>
-                              <li>Pages: ${book.pages}</li>
-                              <li>${book.read}</li>
-                          </ul>
-                      </div>
-                      <div class="card-footer">
-                          <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="deleteBook(${index})" title="Delete">Delete</button>
-                              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="toggleReadStatus(${index})" title="Read Status">${
+        <div class="card">
+          <div class="card-header">
+            <h3>${book.title}</h3>
+          </div>
+          <div class="card-body">
+            <ul class="book-data">
+              <li>Author: ${book.author}</li>
+              <li>Pages: ${book.pages}</li>
+              <li>${book.read}</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary delete-btn" data-index="${index}" title="Delete">Delete</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary toggle-read-btn" data-index="${index}" title="Read Status">${
         book.read === "Read" ? "Mark as Unread" : "Mark as Read"
       }</button>
-                          </div>
-                      </div>
-                  </div>`;
+            </div>
+          </div>
+        </div>`;
       booksContainer.appendChild(bookCard);
     });
   }
 
-  window.deleteBook = function (index) {
-    books.splice(index, 1);
-    renderBooks();
-  };
+  booksContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("delete-btn")) {
+      const index = e.target.getAttribute("data-index");
+      books.splice(index, 1);
+      renderBooks();
+    }
 
-  window.toggleReadStatus = function (index) {
-    books[index].read = books[index].read === "Read" ? "Unread" : "Read";
-    renderBooks();
-  };
+    if (e.target.classList.contains("toggle-read-btn")) {
+      const index = e.target.getAttribute("data-index");
+      books[index].read = books[index].read === "Read" ? "Unread" : "Read";
+      renderBooks();
+    }
+  });
 });
