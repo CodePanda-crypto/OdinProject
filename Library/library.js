@@ -1,5 +1,3 @@
-// File: library.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const modalContainer = document.getElementById("book-modal");
   const openModalButton = document.querySelector(".open-modal-btn");
@@ -17,21 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const bookAuthorFeedback = document.getElementById("book-author-feedback");
   const bookPagesFeedback = document.getElementById("book-pages-feedback");
 
-  let books = [
-    {
-      title: "Orientalism",
-      author: "Edward Said",
-      pages: 368,
-      read: "Read",
-    },
-    {
-      title: "Manufacturing Consent",
-      author: "Noam Chomsky",
-      pages: 480,
-      read: "Read",
-    },
-  ];
-
   class Book {
     constructor(title, author, pages, read) {
       this.title = title;
@@ -39,42 +22,71 @@ document.addEventListener("DOMContentLoaded", () => {
       this.pages = pages;
       this.read = read;
     }
+
+    renderBookCard(index) {
+      const bookCard = document.createElement("div");
+      bookCard.classList.add("book-card");
+      bookCard.setAttribute("data-index", index);
+      bookCard.innerHTML = `
+        <div class="card">
+          <div class="card-header">
+            <h3>${this.title}</h3>
+          </div>
+          <div class="card-body">
+            <ul class="book-data">
+              <li>Author: ${this.author}</li>
+              <li>Pages: ${this.pages}</li>
+              <li>${this.read}</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary delete-btn" data-index="${index}" title="Delete">Delete</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary toggle-read-btn" data-index="${index}" title="Read Status">${
+        this.read === "Read" ? "Mark as Unread" : "Mark as Read"
+      }</button>
+            </div>
+          </div>
+        </div>`;
+      return bookCard;
+    }
   }
 
-  // Render the initial set of books
-  renderBooks();
+  let books = [
+    new Book("Orientalism", "Edward Said", 368, "Read"),
+    new Book("Manufacturing Consent", "Noam Chomsky", 480, "Read"),
+  ];
 
-  openModalButton.addEventListener("click", () => {
-    modalContainer.style.display = "flex";
-    modalContainer.focus();
-  });
-
-  closeModalButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      modalContainer.style.display = "none";
-      resetForm();
+  function renderBooks() {
+    booksContainer.innerHTML = "";
+    books.forEach((book, index) => {
+      booksContainer.appendChild(book.renderBookCard(index));
     });
-  });
+  }
 
-  // Close modal when clicking outside the content
-  window.addEventListener("click", (e) => {
-    if (e.target === modalContainer) {
-      modalContainer.style.display = "none";
-      resetForm();
-    }
-  });
+  function addBook() {
+    const newBook = new Book(
+      bookTitle.value,
+      bookAuthor.value,
+      parseInt(bookPages.value),
+      bookRead.checked ? "Read" : "Unread"
+    );
+    books.push(newBook);
+    renderBooks();
+    modalContainer.style.display = "none";
+    resetForm();
+  }
 
-  addBookButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      addBook();
-    }
-  });
+  function resetForm() {
+    bookForm.reset();
+    bookTitleFeedback.textContent = "";
+    bookAuthorFeedback.textContent = "";
+    bookPagesFeedback.textContent = "";
+  }
 
   function validateForm() {
     let isValid = true;
 
-    // Validate book title
     if (bookTitle.value.trim() === "") {
       bookTitleFeedback.textContent = "*Title is required.";
       bookTitleFeedback.style.color = "red";
@@ -83,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
       bookTitleFeedback.textContent = "";
     }
 
-    // Validate book author
     if (bookAuthor.value.trim() === "") {
       bookAuthorFeedback.textContent = "*Author is required.";
       bookAuthorFeedback.style.color = "red";
@@ -92,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
       bookAuthorFeedback.textContent = "";
     }
 
-    // Validate book pages
     if (
       bookPages.value.trim() === "" ||
       isNaN(bookPages.value) ||
@@ -108,56 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return isValid;
   }
 
-  function addBook() {
-    const book = new Book(
-      bookTitle.value,
-      bookAuthor.value,
-      bookPages.value,
-      bookRead.checked ? "Read" : "Unread"
-    );
-    books.push(book);
-    renderBooks();
-    modalContainer.style.display = "none";
-    resetForm();
-  }
-
-  function resetForm() {
-    bookForm.reset();
-    bookTitleFeedback.textContent = "";
-    bookAuthorFeedback.textContent = "";
-    bookPagesFeedback.textContent = "";
-  }
-
-  function renderBooks() {
-    booksContainer.innerHTML = "";
-    books.forEach((book, index) => {
-      const bookCard = document.createElement("div");
-      bookCard.classList.add("book-card");
-      bookCard.innerHTML = `
-        <div class="card">
-          <div class="card-header">
-            <h3>${book.title}</h3>
-          </div>
-          <div class="card-body">
-            <ul class="book-data">
-              <li>Author: ${book.author}</li>
-              <li>Pages: ${book.pages}</li>
-              <li>${book.read}</li>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary delete-btn" data-index="${index}" title="Delete">Delete</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary toggle-read-btn" data-index="${index}" title="Read Status">${
-        book.read === "Read" ? "Mark as Unread" : "Mark as Read"
-      }</button>
-            </div>
-          </div>
-        </div>`;
-      booksContainer.appendChild(bookCard);
-    });
-  }
-
   booksContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete-btn")) {
       const index = e.target.getAttribute("data-index");
@@ -169,6 +129,34 @@ document.addEventListener("DOMContentLoaded", () => {
       const index = e.target.getAttribute("data-index");
       books[index].read = books[index].read === "Read" ? "Unread" : "Read";
       renderBooks();
+    }
+  });
+
+  renderBooks();
+
+  openModalButton.addEventListener("click", () => {
+    modalContainer.style.display = "flex";
+    modalContainer.focus();
+  });
+
+  closeModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      modalContainer.style.display = "none";
+      resetForm();
+    });
+  });
+
+  addBookButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      addBook();
+    }
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modalContainer) {
+      modalContainer.style.display = "none";
+      resetForm();
     }
   });
 });
