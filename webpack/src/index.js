@@ -1,5 +1,12 @@
-// another JS file
-// Note: You can only use single quotes (') or double quotes (") for import statements 
-import { functionOne } from './fun';
+// import your function
+import myName from './myName';
 
-functionOne(); // this should work as expected!
+function component() {
+  const element = document.createElement('div');
+
+  // use your function!
+  element.textContent = myName('Cody');
+  return element;
+}
+
+document.body.appendChild(component());
