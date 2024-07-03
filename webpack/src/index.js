@@ -1,12 +1,24 @@
 // import your function
-import myName from './myName';
+import { myName } from './myName';
+import { username } from './myName';
 
 function component() {
-  const element = document.createElement('div');
+  let element = document.createElement('div');
 
-  // use your function!
-  element.textContent = myName('Cody');
-  return element;
+    // Lodash, currently included via a script, is required for this line to work
+    element.innerHTML = _.join(['Hello', 'webpack'],'');
+
+    return element;
+
+    let Name = document.createElement(div);
+    Name.textContent = `${myName}`;
+    return Name;
+
+    let Username = document.createElement(div);
+    Username.textContent = `${username}`;
+    return Username;
+
 }
+
 
 document.body.appendChild(component());
