@@ -1,64 +1,64 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".button");
-  const result = document.getElementById("result");
-  const restart = document.getElementById("restart-button");
-  const playerScore = document.getElementById("player-score");
-  const computerScore = document.getElementById("computer-score");
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.button')
+  const result = document.getElementById('result')
+  const restart = document.getElementById('restart-button')
+  const playerScore = document.getElementById('player-score')
+  const computerScore = document.getElementById('computer-score')
 
   for (const button of buttons) {
-    button.addEventListener("click", () => {
-      let playerChoice = button.id;
-      let computerChoice = getComputerChoice();
-      let winner = getWinner(playerChoice, computerChoice);
-      updateScore(winner);
-      displayResult(winner, playerChoice, computerChoice);
-    });
+    button.addEventListener('click', () => {
+      const playerChoice = button.id
+      const computerChoice = getComputerChoice()
+      const winner = getWinner(playerChoice, computerChoice)
+      updateScore(winner)
+      displayResult(winner, playerChoice, computerChoice)
+    })
   }
 
-  restart.addEventListener("click", () => {
-    playerScore.textContent = "0";
-    computerScore.textContent = "0";
-    result.textContent = "Start Again";
-  });
-  function getComputerChoice() {
-    let choices = ["rock", "paper", "scissors"];
-    let randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
+  restart.addEventListener('click', () => {
+    playerScore.textContent = '0'
+    computerScore.textContent = '0'
+    result.textContent = 'Start Again'
+  })
+  function getComputerChoice () {
+    const choices = ['rock', 'paper', 'scissors']
+    const randomIndex = Math.floor(Math.random() * choices.length)
+    return choices[randomIndex]
   }
-  function getWinner(playerChoice, computerChoice) {
+  function getWinner (playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
-      return "draw";
+      return 'draw'
     }
     if (
-      (playerChoice === "rock" && computerChoice === "scissors") ||
-      (playerChoice === "scissors" && computerChoice === "paper") ||
-      (playerChoice === "paper" && computerChoice === "rock")
+      (playerChoice === 'rock' && computerChoice === 'scissors') ||
+      (playerChoice === 'scissors' && computerChoice === 'paper') ||
+      (playerChoice === 'paper' && computerChoice === 'rock')
     ) {
-      return "player";
+      return 'player'
     }
-    return "computer";
+    return 'computer'
   }
-  function updateScore(winner) {
-    if (winner === "player") {
-      let currentScore = parseInt(playerScore.textContent);
-      playerScore.textContent = currentScore + 1;
+  function updateScore (winner) {
+    if (winner === 'player') {
+      const currentScore = parseInt(playerScore.textContent)
+      playerScore.textContent = currentScore + 1
     }
-    if (winner === "computer") {
-      let currentScore = parseInt(computerScore.textContent);
-      computerScore.textContent = currentScore + 1;
+    if (winner === 'computer') {
+      const currentScore = parseInt(computerScore.textContent)
+      computerScore.textContent = currentScore + 1
     }
   }
-  function displayResult(winner, playerChoice, computerChoice) {
-    let message;
-    if (winner === "draw") {
-      message = `It's a draw! You both chose ${playerChoice}.`;
+  function displayResult (winner, playerChoice, computerChoice) {
+    let message
+    if (winner === 'draw') {
+      message = `It's a draw! You both chose ${playerChoice}.`
     }
-    if (winner === "player") {
-      message = `You win! ${playerChoice} beats ${computerChoice}.`;
+    if (winner === 'player') {
+      message = `You win! ${playerChoice} beats ${computerChoice}.`
     }
-    if (winner === "computer") {
-      message = `You lose! ${computerChoice} beats ${playerChoice}.`;
+    if (winner === 'computer') {
+      message = `You lose! ${computerChoice} beats ${playerChoice}.`
     }
-    result.textContent = message;
+    result.textContent = message
   }
-});
+})
