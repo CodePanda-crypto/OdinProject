@@ -6,8 +6,8 @@ const birthDate = document.getElementById('birth-date')
 const password = document.getElementById('password')
 const passwordConfirm = document.getElementById('confirm-password')
 const passwordConfirmError = document.getElementById('confirm-password-error')
-const submitButton = document.getElementById('submit')
 const form = document.getElementById('form')
+// The submitButton variable is not needed, so it can be removed
 
 function validatePasswordConfirm () {
   if (password.value === passwordConfirm.value) {
