@@ -1,0 +1,20 @@
+{
+    "eslint.debug": true,
+    "eslint.ignoreUntitled": true,
+    "eslint.lintTask.enable": true,
+    "eslint.probe": [
+        "astro",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "mdx",
+        "vue",
+        "markdown",
+        "json",
+        "jsonc",
+        "css"
+    ],
+    "eslint.runtime": ""
+}
