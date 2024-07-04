@@ -16,5 +16,6 @@
         "jsonc",
         "css"
     ],
-    "eslint.runtime": ""
+    "eslint.runtime": "",
+    "eslint.nodePath": " /OdinProject/node_modules"
 }
