@@ -170,6 +170,7 @@ body {
 .nav-link {
   color: #fff;
   text-decoration: none;
+  transition: all 1s ease-in;
 }
 
 .nav-link:hover {
@@ -225,6 +226,7 @@ body {
   display: inline-block;
   margin-right: 10px;
   text-align: center;
+  transition: all 0.5s ease-in;
 }
 
 .btn:hover {
@@ -270,6 +272,7 @@ body {
   align-items: center;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(8, 117, 233, 1);
+  transition: all 0.5s ease-in;
 }
 .open-modal-btn img {
   width: 65px;
@@ -280,7 +283,6 @@ body {
 .open-modal-btn:active {
   outline: none;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  background-color: #007bff;
 }
 
 /* Modal container styling for accessibility and responsiveness */
